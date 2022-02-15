@@ -8,7 +8,7 @@ const elFormInput = selectElement(".header__input");
 
 const elMovieTemplate = selectElement("#movie-template").content;
 
-const bookmarkArray = [];
+const bookmarkArray = JSON.parse(window.localStorage.getItem("bookmarkArray")) || [];
 
 // UPDATE LOCAL
 const updateLocal = () =>
@@ -26,7 +26,7 @@ API_KEY = "831c2068";
 
 let imdbIdArrayas = [];
 
-async function getMovies(searchQuery) {
+async function getMovies(searchQuery = "shrek") {
   const response = await fetch("https://www.omdbapi.com/?apikey=" + API_KEY + "&s=" + searchQuery);
 
   const data = await response.json();
@@ -70,10 +70,20 @@ const infoModal = (array, imdbId) => {
 const addBookmark = (array, imdbId, bookmark) => {
   const movieIndex = array.findIndex((movie) => movie.imdbID === imdbId);
 
-  if (bookmark.includes(array[movieIndex])) return;
+  if (bookmark.length <= 0) bookmark.push(array[movieIndex]), updateLocal();
 
-  bookmark.unshift(array[movieIndex]);
+  if (testBookmark(bookmark, imdbId)) return;
+  else bookmark.unshift(array[movieIndex]);
+
   updateLocal();
+};
+
+const testBookmark = (array, id) => {
+  let summ = 0;
+  array.forEach((movie) => {
+    if (movie.imdbID === id) summ++;
+  });
+  return summ;
 };
 
 elModalInfo.addEventListener("click", (evt) => {
