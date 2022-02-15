@@ -4,7 +4,7 @@ const elNavClose = selectElement(".nav__close-button", elNav);
 const elMoviesList = selectElement(".last-movies__list");
 const elModalInfo = selectElement(".modal-info");
 const elForm = selectElement(".header__form");
-const elFormInput = selectElement(".header__inpur");
+const elFormInput = selectElement(".header__input");
 
 const elMovieTemplate = selectElement("#movie-template").content;
 
@@ -26,18 +26,12 @@ API_KEY = "831c2068";
 
 let imdbIdArrayas = [];
 
-async function getMovies() {
-  const response = await fetch("https://www.omdbapi.com/?apikey=" + API_KEY + "&s=shrek");
+async function getMovies(searchQuery) {
+  const response = await fetch("https://www.omdbapi.com/?apikey=" + API_KEY + "&s=" + searchQuery);
 
   const data = await response.json();
 
   moviesRender(data.Search, elMoviesList);
-
-  elForm.addEventListener("submit", (evt) => {
-    evt.preventDefault();
-
-
-  });
 }
 
 getMovies();
@@ -88,4 +82,12 @@ elModalInfo.addEventListener("click", (evt) => {
     elModalInfo.classList.remove("modal-info--active");
 });
 
+elForm.addEventListener("submit", (evt) => {
+  evt.preventDefault();
 
+  const searchQuery = elFormInput.value.trim();
+
+  if (!searchQuery) return;
+
+  getMovies(searchQuery);
+});
