@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/main.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <title>Document</title>
+  </head>
+  <body class="body body--menu">
+    <!-- HEADER -->
+    <header class="header">
+      <div class="container">
+        <a class="header__link" href="./index.html">
+          <img
+            class="header__logo"
+            src="./images/logo.svg"
+            alt="IMDB's logo"
+            width="64"
+            height="32"
+          />
+        </a>
+
+        <button class="header__burger header__burger--active" type="button">Menu</button>
+
+        <nav class="nav">
+          <div class="container">
+            <div class="nav__inner">
+              <a class="header__link" href="./index.html">
+                <img
+                  class="header__logo"
+                  src="./images/logo.svg"
+                  alt="IMDB's logo"
+                  width="98"
+                  height="49"
+                />
+              </a>
+
+              <button class="nav__close-button" type="button"></button>
+            </div>
+            <ul class="nav__list">
+              <li class="nav__item">
+                <strong>Movies</strong>
+
+                <ul class="nav__sublist">
+                  <li class="nav__sublist__item">
+                    <a class="nav__sublist__link" href="#">Release calendar</a>
+                  </li>
+                  <li class="nav__sublist__item">
+                    <a class="nav__sublist__link" href="#">DVD & Blu-ray Releases</a>
+                  </li>
+                  <li class="nav__sublist__item">
+                    <a class="nav__sublist__link" href="#">Top 250 Movies</a>
+                  </li>
+                  <li class="nav__sublist__item">
+                    <a class="nav__sublist__link" href="#">Most popular Movies</a>
+                  </li>
+                  <li class="nav__sublist__item">
+                    <a class="nav__sublist__link" href="#">Browse Movies by Genre</a>
+                  </li>
+                  <li class="nav__sublist__item">
+                    <a class="nav__sublist__link" href="#">Top Box Office</a>
+                  </li>
+                  <li class="nav__sublist__item">
+                    <a class="nav__sublist__link" href="#">Showtimes & Tickets</a>
+                  </li>
+                  <li class="nav__sublist__item">
+                    <a class="nav__sublist__link" href="#">In Theaters</a>
+                  </li>
+                  <li class="nav__sublist__item">
+                    <a class="nav__sublist__link" href="#">Coming soon</a>
+                  </li>
+                  <li class="nav__sublist__item">
+                    <a class="nav__sublist__link" href="#">Movie News</a>
+                  </li>
+                  <li class="nav__sublist__item">
+                    <a class="nav__sublist__link" href="#">India Movie Spotlight</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <form class="header__form">
+          <select class="header__select" name="select" id="">
+            <option value="all">All</option>
+          </select>
+          <input
+            class="header__input"
+            type="text"
+            name="search"
+            autocomplete="off"
+            placeholder="Search"
+          />
+
+          <button class="header__button"></button>
+        </form>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="main">
+      <section class="last-movies">
+        <div class="container">
+          <ul class="last-movies__list slider">
+            <li class="movies__loading">
+              <span class="movies__loading__inner"></span>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer"></footer>
+
+    <!-- MODALS -->
+    <modal class="modal-info">
+      <div class="modal-info__inner">
+        <a class="modal-info__link" href="#">
+          <img
+            class="moda-info__image"
+            src="https://via.placeholder.com/190x280"
+            alt="Placeholder alt"
+            width="190"
+            height="280"
+          />
+        </a>
+
+        <div class="modal-info__aside">
+          <h3 class="modal-info__title">
+            <a class="modal-info__title__link" href="#">Shrek</a>
+          </h3>
+
+          <ul class="modal-info__list">
+            <li class="modal-info__item">
+              <time class="modal-info__item__date">2021</time>
+            </li>
+          </ul>
+        </div>
+
+        <button class="modal-info__close" name="modal-close"></button>
+      </div>
+    </modal>
+
+    <!-- TEMPLATES -->
+    <template id="movie-template">
+      <li class="movie slider__item">
+        <a class="movie__link" href="#">
+          <img
+            class="movie__poster"
+            src="https://via.placeholder.com/100"
+            alt="dsf"
+            width="185"
+            height="280"
+          />
+        </a>
+
+        <div class="movie__info">
+          <div class="movie__rating">
+            <span class="movie__rating__text">8.7</span>
+
+            <button class="movie__rating__button" type="button">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M22.724 8.217l-6.786-.587-2.65-6.22c-.477-1.133-2.103-1.133-2.58 0l-2.65 6.234-6.772.573c-1.234.098-1.739 1.636-.8 2.446l5.146 4.446-1.542 6.598c-.28 1.202 1.023 2.153 2.09 1.51l5.818-3.495 5.819 3.509c1.065.643 2.37-.308 2.089-1.51l-1.542-6.612 5.145-4.446c.94-.81.45-2.348-.785-2.446zm-10.726 8.89l-5.272 3.174 1.402-5.983-4.655-4.026 6.141-.531 2.384-5.634 2.398 5.648 6.14.531-4.654 4.026 1.402 5.983-5.286-3.187z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+
+          <h3 class="movie__title">
+            <a class="movie__title__link" href="#">Shrek</a>
+          </h3>
+
+          <button class="movie__bookmark-button" type="button">Watchlist</button>
+
+          <div class="movie__bottom">
+            <a class="movie__trailer-link" href="#">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.14-5.18a1 1 0 0 0 0-1.69L9.54 5.98A.998.998 0 0 0 8 6.82z"
+                ></path>
+              </svg>
+
+              <span>Trailer</span>
+            </a>
+
+            <button class="movie__info-button">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                class="ipc-icon ipc-icon--info"
+                id="iconContext-info"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                role="presentation"
+              >
+                <path fill="none" d="M0 0h24v24H0V0z"></path>
+                <path
+                  d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </li>
+    </template>
+
+    <script src="./js/utils.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>

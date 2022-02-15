@@ -1,0 +1,8 @@
+<svg class="ipc-loader ipc-loader--dot FeatureRowLoader__StyledLoader-sc-ekkh6s-4 kSTfdZ" role="presentation"
+  width="52px" height="12px" viewBox="0 0 52 12" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <g class="ipc-loader__container" fill="currentColor">
+    <circle class="ipc-loader__dot ipc-loader__dot--one" cx="6" cy="6" r="6"></circle>
+    <circle class="ipc-loader__dot ipc-loader__dot--two" cx="26" cy="6" r="6"></circle>
+    <circle class="ipc-loader__dot ipc-loader__dot--three" cx="46" cy="6" r="6"></circle>
+  </g>
+</svg>

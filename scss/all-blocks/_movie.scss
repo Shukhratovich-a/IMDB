@@ -1,0 +1,235 @@
+.movie {
+  background-color: #1a1a1a;
+  border-radius: 4px;
+}
+
+.movie__poster {
+  object-fit: cover;
+}
+
+.movie__info {
+  padding: 8px;
+}
+
+.movie__rating {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.movie__rating__text {
+  display: flex;
+  align-items: center;
+  margin-right: 24px;
+  font-size: 16px;
+  line-height: 16px;
+  opacity: 0.8;
+
+  &::before {
+    content: "";
+    display: block;
+    width: 12px;
+    height: 12px;
+    margin-right: 4px;
+    background-image: url("../images/rating-star.svg");
+    background-size: contain;
+  }
+}
+
+.movie__rating__button {
+  padding: 12px 18px;
+  color: #5799ef;
+  background-color: transparent;
+  border: none;
+  border-radius: 4px;
+  outline: 1px dashed transparent;
+  outline-offset: 1px;
+  transition: outline 0.25s ease-out, background-color 0.25s ease-out;
+
+  svg {
+    display: block;
+  }
+
+  &:hover {
+    color: inherit;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  &:active {
+    color: inherit;
+    background-color: rgba(255, 255, 255, 0.5);
+    outline-color: #ffffff;
+  }
+}
+
+.movie__title {
+  height: 48px;
+  margin: 0;
+  margin-bottom: 16px;
+  font-weight: 400;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.movie__title__link {
+  line-height: 24px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.movie__bookmark-button {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 6px;
+  font-weight: 500;
+  color: #5799ef;
+  line-height: 24px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  transition: background-color 0.25s ease-out;
+
+  &::before {
+    content: "";
+    display: block;
+    margin-left: -6px;
+    margin-right: 6px;
+    width: 24px;
+    height: 24px;
+    color: #5799ef;
+    background-image: url("../images/plus.svg");
+  }
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  &:active {
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+  }
+}
+
+.movie__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.movie__trailer-link {
+  display: flex;
+  align-items: center;
+  padding: 6px 10px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+  text-decoration: none;
+  color: inherit;
+  background-color: rgba(255, 255, 255, 0);
+  border-radius: 4px;
+  transition: background-color 0.25s ease-out;
+
+  svg {
+    margin-right: 4px;
+    margin-left: -8px;
+    opacity: 0.5;
+    transition: color 0.25s ease-out;
+  }
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    opacity: 1;
+
+    svg {
+      opacity: 1;
+    }
+  }
+}
+
+.movie__info-button {
+  padding: 12px;
+  border: 0;
+  outline: 0;
+  background-color: rgba(255, 255, 255, 0);
+  border-radius: 50%;
+  transition: background-color 0.25s ease-out;
+
+  svg {
+    display: block;
+    color: #ffffff;
+    opacity: 0.5;
+    transition: color 0.25s ease-out;
+  }
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    opacity: 1;
+
+    svg {
+      opacity: 1;
+    }
+  }
+}
+
+.movies__loading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  width: 56px;
+  height: 470px;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 12px;
+    height: 12px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    animation: loading 1s linear infinite;
+    animation-delay: 0.4s;
+    transition: background-color 1s ease-out;
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    width: 12px;
+    height: 12px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    animation: loading 1s linear infinite;
+    transition: background-color 1s ease-out;
+  }
+}
+
+.movies__loading__inner {
+  width: 12px;
+  height: 12px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  animation: loading 1s linear infinite;
+  animation-delay: 0.2s;
+  transition: background-color 1s ease-out;
+}
+
+@keyframes loading {
+  0% {
+    background-color: rgba($color: #ffffff, $alpha: 0);
+  }
+
+  50% {
+    background-color: rgba($color: #ffffff, $alpha: 1);
+  }
+
+  100% {
+    background-color: rgba($color: #ffffff, $alpha: 0);
+  }
+}
