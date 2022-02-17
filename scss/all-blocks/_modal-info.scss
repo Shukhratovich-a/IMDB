@@ -4,33 +4,36 @@
   right: 0;
   bottom: 0;
   left: 0;
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
-  background-color: rgba($color: #000000, $alpha: 0.5);
+  background-color: rgba($color: #000000, $alpha: 0.65);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
 }
 
 .modal-info__inner {
+  transform: scale(0);
   position: relative;
   display: flex;
   width: 600px;
   padding: 24px;
   background-color: #1f1f1f;
   border-radius: 4px;
+  transition: transform 0.25s ease;
+  pointer-events: none;
 }
 
-.modal-info--active {
-  display: flex;
-}
-
-.moda-info__image{
+.modal-info__image {
   margin-right: 24px;
 }
 
 .modal-info__title {
   margin: 0;
+  margin-bottom: 5px;
   font-size: 24px;
 
   &__link {
@@ -63,5 +66,97 @@
 
   &:hover {
     background-color: rgba($color: #ffffff, $alpha: 0.2);
+  }
+}
+
+.modal-info__list {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  margin-bottom: 12px;
+  padding: 0;
+  list-style-type: none;
+}
+
+.modal-info__item {
+  font-size: 14px;
+  opacity: 0.8;
+
+  & + & {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 2px;
+      height: 2px;
+      margin-right: 10px;
+      background-color: #ffffff;
+      border-radius: 50%;
+    }
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.modal-info__overview {
+  margin: 0;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.modal-info__genres {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+  margin-bottom: 12px;
+  padding: 0;
+  list-style-type: none;
+}
+
+.modal-info__genre {
+  opacity: 0.8;
+
+  & + & {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 2px;
+      height: 2px;
+      margin-right: 10px;
+      background-color: #ffffff;
+      border-radius: 50%;
+    }
+  }
+
+  a {
+    font-size: 14px;
+    line-height: 16px;
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  &:hover {
+    text-decoration: underline;
+    opacity: 1;
+  }
+}
+
+.modal-info--active {
+  opacity: 1;
+  pointer-events: all;
+
+  .modal-info__inner {
+    transform: scale(1);
+    pointer-events: all;
   }
 }

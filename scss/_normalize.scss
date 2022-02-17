@@ -84,6 +84,7 @@ textarea {
   font-size: 100%;
   line-height: 1.15;
   margin: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
 button,
@@ -181,4 +182,3 @@ template {
 [hidden] {
   display: none;
 }
-  

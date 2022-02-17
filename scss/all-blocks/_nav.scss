@@ -50,6 +50,7 @@
   z-index: 999;
   padding: 32px 0;
   background-color: #1f1f1f;
+  transition: transform 0.25s ease-out;
 }
 
 .nav .container {
@@ -133,5 +134,4 @@
 
 .nav.nav--active {
   transform: translateY(0);
-  transition: transform 0.25s ease-out;
 }

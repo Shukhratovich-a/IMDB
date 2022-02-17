@@ -1,6 +1,61 @@
 .movie {
+  width: 185px;
   background-color: #1a1a1a;
   border-radius: 4px;
+}
+
+.movie__top {
+  position: relative;
+}
+
+.movie__top__button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0;
+  width: 24px;
+  height: 34px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+
+  &::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-image: url("../images/plus-white.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+}
+
+.bookmark-active {
+  color: #f5c518;
+  opacity: 0;
+}
+
+.bookmark-disabled {
+  color: #000000;
+  opacity: 0.7;
+}
+
+.bookmark-shadow {
+  color: #000000;
+  opacity: 0.5;
+}
+
+.movie__top__button--bookmarked{
+  &::before {
+    background-image: url("../images/tick-black.svg");
+    background-size: 16px;
+  }
+
+  .bookmark-active {
+    opacity: 1;
+  }
 }
 
 .movie__poster {
@@ -104,6 +159,7 @@
     height: 24px;
     color: #5799ef;
     background-image: url("../images/plus.svg");
+    background-size: contain;
   }
 
   &:hover {
@@ -113,6 +169,12 @@
   &:active {
     &:hover {
       background-color: rgba(255, 255, 255, 0.3);
+    }
+  }
+
+  &--bookmarked {
+    &::before {
+      background-image: url("../images/tick.svg");
     }
   }
 }

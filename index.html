@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/x-icon" href="./images/imdb_logo.png" />
     <link rel="stylesheet" href="./css/main.min.css" />
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-    <title>Document</title>
+    <title>IMDb: Ratings, Reviews, and Where to Watch the Best Movies & TV Shows</title>
   </head>
   <body class="body body--menu">
     <!-- HEADER -->
@@ -102,13 +102,25 @@
 
     <!-- MAIN -->
     <main class="main">
-      <section class="last-movies">
+      <section class="movies">
         <div class="container">
-          <ul class="last-movies__list slider">
+          <h2 class="movies__heading">What to Watch</h2>
+
+          <ul class="movies__list">
             <li class="movies__loading">
               <span class="movies__loading__inner"></span>
             </li>
           </ul>
+
+          <div class="movies__pagination">
+            <button class="pagination__prev" aria-label="Get previous movies" type="button">
+              Previous
+            </button>
+
+            <button class="pagination__next" aria-label="Get nextа movies" type="button">
+              Next
+            </button>
+          </div>
         </div>
       </section>
     </main>
@@ -121,7 +133,7 @@
       <div class="modal-info__inner">
         <a class="modal-info__link" href="#">
           <img
-            class="moda-info__image"
+            class="modal-info__image"
             src="https://via.placeholder.com/190x280"
             alt="Placeholder alt"
             width="190"
@@ -138,7 +150,20 @@
             <li class="modal-info__item">
               <time class="modal-info__item__date">2021</time>
             </li>
+            <li class="modal-info__item">
+              <p class="modal-info__item__runtime">1h 30min</p>
+            </li>
+            <li class="modal-info__item">
+              <p class="modal-info__item__rating">16+</p>
+            </li>
           </ul>
+
+          <p class="modal-info__overview">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda quibusdam hic earum
+            nostrum ea harum dolorum. Cumque aliquid provident ullam.
+          </p>
+
+          <ul class="modal-info__genres"></ul>
         </div>
 
         <button class="modal-info__close" name="modal-close"></button>
@@ -148,15 +173,37 @@
     <!-- TEMPLATES -->
     <template id="movie-template">
       <li class="movie slider__item">
-        <a class="movie__link" href="#">
-          <img
-            class="movie__poster"
-            src="https://via.placeholder.com/100"
-            alt="dsf"
-            width="185"
-            height="280"
-          />
-        </a>
+        <div class="movie__top">
+          <a class="movie__link" href="#">
+            <img
+              class="movie__poster"
+              src="https://via.placeholder.com/100"
+              alt="dsf"
+              width="185"
+              height="280"
+            />
+          </a>
+
+          <button class="movie__top__button" type="button">
+            <svg width="24" height="34" xmlns="http://www.w3.org/2000/svg">
+              <path
+                class="bookmark-disabled"
+                d="M24 0H0v32l12.24-5.71L24 31.77z"
+                fill="currentColor"
+              />
+              <path
+                class="bookmark-active"
+                d="M24 0H0v32l12.24-5.71L24 31.77z"
+                fill="currentColor"
+              />
+              <path
+                class="bookmark-shadow"
+                d="M24 31.77v2l-11.76-5.48L0 34v-2l12.24-5.71z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </div>
 
         <div class="movie__info">
           <div class="movie__rating">
@@ -165,8 +212,8 @@
             <button class="movie__rating__button" type="button">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
                 <path
-                  d="M22.724 8.217l-6.786-.587-2.65-6.22c-.477-1.133-2.103-1.133-2.58 0l-2.65 6.234-6.772.573c-1.234.098-1.739 1.636-.8 2.446l5.146 4.446-1.542 6.598c-.28 1.202 1.023 2.153 2.09 1.51l5.818-3.495 5.819 3.509c1.065.643 2.37-.308 2.089-1.51l-1.542-6.612 5.145-4.446c.94-.81.45-2.348-.785-2.446zm-10.726 8.89l-5.272 3.174 1.402-5.983-4.655-4.026 6.141-.531 2.384-5.634 2.398 5.648 6.14.531-4.654 4.026 1.402 5.983-5.286-3.187z"
-                ></path>
+                  d="m22.72 8.22-6.78-.59-2.65-6.22a1.4 1.4 0 0 0-2.58 0L8.06 7.64l-6.77.58a1.4 1.4 0 0 0-.8 2.44l5.14 4.45-1.54 6.6a1.4 1.4 0 0 0 2.09 1.5L12 19.73l5.82 3.51a1.4 1.4 0 0 0 2.09-1.5l-1.55-6.62 5.15-4.45c.94-.8.45-2.34-.79-2.44zM12 17.1l-5.27 3.17 1.4-5.98-4.66-4.03 6.14-.53L12 4.11l2.4 5.64 6.14.54-4.66 4.02 1.4 5.98L12 17.11z"
+                />
               </svg>
             </button>
           </div>
@@ -179,36 +226,21 @@
 
           <div class="movie__bottom">
             <a class="movie__trailer-link" href="#">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor">
                 <path
-                  d="M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.14-5.18a1 1 0 0 0 0-1.69L9.54 5.98A.998.998 0 0 0 8 6.82z"
-                ></path>
+                  d="M8 6.82v10.36a1 1 0 0 0 1.54.84l8.14-5.18a1 1 0 0 0 0-1.69L9.54 5.98A1 1 0 0 0 8 6.82z"
+                />
               </svg>
 
               <span>Trailer</span>
             </a>
 
             <button class="movie__info-button">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                class="ipc-icon ipc-icon--info"
-                id="iconContext-info"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                role="presentation"
-              >
-                <path fill="none" d="M0 0h24v24H0V0z"></path>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor">
+                <path fill="none" d="M0 0h24v24H0V0z" />
                 <path
-                  d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
-                ></path>
+                  d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 18a8.01 8.01 0 0 1 0-16 8.01 8.01 0 0 1 0 16z"
+                />
               </svg>
             </button>
           </div>
@@ -216,7 +248,14 @@
       </li>
     </template>
 
+    <template id="genre-template">
+      <li class="modal-info__genre">
+        <a href="#">Action</a>
+      </li>
+    </template>
+
     <script src="./js/utils.js"></script>
+    <script src="./js/movies-api.js"></script>
     <script src="./js/main.js"></script>
   </body>
 </html>
