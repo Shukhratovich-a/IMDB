@@ -1,3 +1,21 @@
-.pagination__prev{
-  
+.movies__pagination {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.pagination__prev {
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  font-weight: 700;
+  border-radius: 4px;
+}
+
+.pagination__next {
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  font-weight: 700;
+  border-radius: 4px;
 }

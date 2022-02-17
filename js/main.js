@@ -5,6 +5,11 @@ const elMoviesList = selectElement(".movies__list");
 const elModalInfo = selectElement(".modal-info");
 const elForm = selectElement(".header__form");
 const elFormInput = selectElement(".header__input");
+const elFormSelect = selectElement(".header__select");
+const elPagination = selectElement(".movies__pagination");
+
+const elPrevButton = selectElement(".pagination__prev");
+const elNextButton = selectElement(".pagination__next");
 
 const elMovieTemplate = selectElement("#movie-template").content;
 const elGenreTemplate = selectElement("#genre-template").content;
@@ -12,16 +17,42 @@ const elGenreTemplate = selectElement("#genre-template").content;
 elBurger.addEventListener("click", () => {
   elNav.classList.add("nav--active");
 });
+elNavClose.addEventListener("click", () => {
+  elNav.classList.remove("nav--active");
+});
 
 const bookmarkArray = JSON.parse(window.localStorage.getItem("bookmarkArray")) || [];
+let paginationNumber = 1;
+let moviesType = "";
+let searchQuery = "shrek";
 
 // UPDATE LOCAL
 const updateLocal = () =>
   window.localStorage.setItem("bookmarkArray", JSON.stringify(bookmarkArray));
 
-elNavClose.addEventListener("click", () => {
-  elNav.classList.remove("nav--active");
-});
+API_KEY = "831c2068";
+
+async function getMovies() {
+  const response = await fetch(
+    "https://www.omdbapi.com/?apikey=" +
+      API_KEY +
+      "&s=" +
+      searchQuery +
+      "&page=" +
+      paginationNumber +
+      "&type=" +
+      moviesType
+  );
+
+  const data = await response.json();
+
+  paginationStyle(data.totalResults);
+
+  if (data.Response === "True") moviesRender(data.Search, elMoviesList);
+  else (elMoviesList.innerHTML = null), (elMoviesList.textContent = "No Movie");
+}
+
+getMovies();
 
 const moviesRender = (array, node) => {
   node.innerHTML = null;
@@ -30,7 +61,8 @@ const moviesRender = (array, node) => {
   array.forEach((movie) => {
     const movieTemplate = elMovieTemplate.cloneNode(true);
 
-    selectElement(".movie__poster", movieTemplate).src = movie.Poster;
+    if (movie.Poster !== "N/A") selectElement(".movie__poster", movieTemplate).src = movie.Poster;
+
     selectElement(".movie__title__link", movieTemplate).textContent = movie.Title;
     selectElement(".movie__title__link", movieTemplate).title = movie.Title;
     selectElement(".movie__info-button", movieTemplate).onclick = () => infoModalOpen(movie.imdbID);
@@ -138,10 +170,37 @@ const clearInput = (input) => (input.value = null);
 elForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
 
-  const searchQuery = elFormInput.value.trim();
+  searchQuery = elFormInput.value.trim();
+  moviesType = elFormSelect.value.trim();
 
   if (!searchQuery) return;
+  paginationNumber = 1;
 
   clearInput(elFormInput);
   getMovies(searchQuery);
 });
+
+const paginationController = (button) => {
+  if (button.name === "next") paginationNumber++;
+  else if (button.name === "prev") paginationNumber--;
+};
+
+const paginationStyle = (data) => {
+  const paginationPage = Math.ceil(Number(data) / 10);
+
+  if (paginationNumber <= 1) elPrevButton.disabled = true;
+  else elPrevButton.disabled = false;
+
+  if (paginationNumber === paginationPage) elNextButton.disabled = true;
+  else elNextButton.disabled = false;
+};
+
+const pagination = (evt) => {
+  const button = evt.target;
+
+  paginationController(button);
+
+  getMovies();
+};
+
+elPagination.addEventListener("click", pagination);

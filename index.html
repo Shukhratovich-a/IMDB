@@ -85,8 +85,12 @@
 
         <form class="header__form">
           <select class="header__select" name="select" id="">
-            <option value="all">All</option>
+            <option value="">All</option>
+            <option value="movie">Movies</option>
+            <option value="series">Series</option>
+            <option value="episode">Episode</option>
           </select>
+
           <input
             class="header__input"
             type="text"
@@ -113,11 +117,16 @@
           </ul>
 
           <div class="movies__pagination">
-            <button class="pagination__prev" aria-label="Get previous movies" type="button">
+            <button
+              class="pagination__prev"
+              aria-label="Get previous movies"
+              name="prev"
+              type="button"
+            >
               Previous
             </button>
 
-            <button class="pagination__next" aria-label="Get nextа movies" type="button">
+            <button class="pagination__next" aria-label="Get next movies" name="next" type="button">
               Next
             </button>
           </div>
@@ -177,7 +186,7 @@
           <a class="movie__link" href="#">
             <img
               class="movie__poster"
-              src="https://via.placeholder.com/100"
+              src="https://via.placeholder.com/185x280"
               alt="dsf"
               width="185"
               height="280"
@@ -255,7 +264,6 @@
     </template>
 
     <script src="./js/utils.js"></script>
-    <script src="./js/movies-api.js"></script>
     <script src="./js/main.js"></script>
   </body>
 </html>
